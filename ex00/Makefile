@@ -6,28 +6,23 @@
 #    By: jvarila <jvarila@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/22 12:04:28 by jvarila           #+#    #+#              #
-#    Updated: 2025/09/09 15:39:21 by jvarila          ###   ########.fr        #
+#    Updated: 2025/09/15 15:19:38 by jvarila          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= intern_to_the_resque
+NAME		:= convert
 
 CXX			:= c++
 CXX_FLAGS	:= -Wall -Wextra -Werror -std=c++20
 DEBUG_FLAGS	:= -g
 # ---------------------------------------------------------------------------- #
 INC_DIR		:= ./inc
-HEADERS		:= $(INC_DIR)/Bureaucrat.hpp
+HEADERS		:= $(INC_DIR)/ScalarConverter.hpp
 # ---------------------------------------------------------------------------- #
 SRC_DIR	:=	./src
 OBJ_DIR	:=	./obj
 # ---------------------------------------------------------------------------- #
-SRC :=	$(SRC_DIR)/Bureaucrat.cpp				\
-		$(SRC_DIR)/AForm.cpp					\
-		$(SRC_DIR)/ShrubberyCreationForm.cpp	\
-		$(SRC_DIR)/RobotomyRequestForm.cpp		\
-		$(SRC_DIR)/PresidentialPardonForm.cpp	\
-		$(SRC_DIR)/Intern.cpp					\
+SRC :=	$(SRC_DIR)/ScalarConverter.cpp	\
 		$(SRC_DIR)/main.cpp
 # ---------------------------------------------------------------------------- #
 OBJ :=	$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
