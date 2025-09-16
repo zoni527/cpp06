@@ -26,7 +26,7 @@ enum	LiteralType : unsigned int
 };
 
 static LiteralType	checkLiteralType( std::string const &str );
-static bool			isCharacterLiteral( std::string const &str );
+static bool			isCharLiteral( std::string const &str );
 static bool			isIntLiteral( std::string const &str );
 static bool			isFloatLiteral( std::string const &str );
 static bool			isDoubleLiteral( std::string const &str );
@@ -42,7 +42,7 @@ double	d = -.0,	*dPtr = nullptr;
 
 void	ScalarConverter:: convert( std::string const &str )
 {
-	static_assert(std::numeric_limits<float>::is_iec559, "IEEE 754 required for nan and infinity");
+	static_assert( std::numeric_limits<float>::is_iec559, "IEEE 754 required for nan and infinity" );
 
 	LiteralType	type = checkLiteralType( str );
 	switch ( type )
@@ -92,7 +92,7 @@ static LiteralType	checkLiteralType( std::string const &str )
 {
 	if ( str.empty() )
 		return UNKNOWN;
-	if ( isCharacterLiteral( str ) )
+	if ( isCharLiteral( str ) )
 		return CHAR;
 	if ( isIntLiteral( str ) )
 		return INT;
@@ -106,7 +106,7 @@ static LiteralType	checkLiteralType( std::string const &str )
 /**
  * Valid character literals: a, '1', 'a'
  */
-static bool	isCharacterLiteral( std::string const &str )
+static bool	isCharLiteral( std::string const &str )
 {
 	if ( str.size() > 3 || str.size() == 2 )
 		return false;
@@ -270,7 +270,7 @@ static void	convertDouble( std::string const & str )
 	}
 	dPtr = &d;
 	if ( d <= static_cast<double>( std::numeric_limits<float>::max() )
-		&& d >= static_cast<double>( std::numeric_limits<float>::min() ) )
+		&& d >= static_cast<double>( std::numeric_limits<float>::lowest() ) )
 	{
 		f = static_cast<float>( d );
 		fPtr = &f;

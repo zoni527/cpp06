@@ -14,7 +14,7 @@
 #include "Data.hpp"
 #include <iostream>
 
-int	main()
+int	main( void )
 {
 	Data		d;
 	Data		*ptr = &d;
